@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyApplication" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@color/gotech_dark_canvas</item>
+        <item name="android:statusBarColor">@color/gotech_dark_canvas</item>
+        <item name="android:navigationBarColor">@color/gotech_dark_canvas</item>
+    </style>
+    <style name="Theme.GoTechMedia" parent="Theme.MyApplication" />
+</resources>

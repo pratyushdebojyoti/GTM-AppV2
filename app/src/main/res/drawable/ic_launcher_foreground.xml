@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- GoTech Media Official Brand Symbol scaled into 108dp adaptive icon safe zone -->
+    <group
+        android:scaleX="0.105"
+        android:scaleY="0.105"
+        android:translateX="27"
+        android:translateY="27">
+        <!-- Outer Top-Left Loop of 'G' -->
+        <path
+            android:fillColor="#00E5FF"
+            android:pathData="M 98,362 C 60,320 60,250 102,208 L 202,108 C 218,92 244,92 260,108 C 276,124 276,150 260,166 L 160,266 C 146,280 146,302 160,316 C 174,330 196,330 210,316 L 246,280 L 290,324 L 254,360 C 212,402 140,402 98,362 Z" />
+
+        <!-- Central Ascending Arrow -->
+        <path
+            android:fillColor="#00D2F8"
+            android:pathData="M 126,386 L 330,182 L 296,148 L 452,100 L 404,256 L 370,222 L 166,426 Z" />
+
+        <!-- Bottom Curling Ribbon of 'G' -->
+        <path
+            android:fillColor="#00B4D8"
+            android:pathData="M 104,368 C 140,416 200,470 286,470 C 354,470 402,420 402,352 L 402,240 L 450,240 L 450,300 L 398,300 L 398,352 C 398,400 360,432 300,432 C 236,432 184,388 152,346 Z" />
+
+        <!-- Lower Fold Depth Shading -->
+        <path
+            android:fillColor="#007799"
+            android:pathData="M 330,410 L 330,280 L 398,280 L 398,352 C 398,375 388,395 372,410 Z" />
+
+        <!-- Right Horizontal Crossbar of 'G' -->
+        <path
+            android:fillColor="#00E5FF"
+            android:pathData="M 310,240 L 450,240 L 450,300 L 310,300 Z" />
+    </group>
+</vector>

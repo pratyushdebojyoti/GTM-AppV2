@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "442261143835",
+    "project_id": "gotech-media",
+    "storage_bucket": "gotech-media.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442261143835:android:fac8ded0709076912893be",
+        "android_client_info": {
+          "package_name": "com.gotechmedia.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-Y1PVlrx5zb2-dEL4K-LPO_k2r5IoYXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

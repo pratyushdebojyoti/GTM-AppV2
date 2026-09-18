@@ -1,0 +1,6 @@
+{
+  "name": "GoTech Media",
+  "description": "Production Android application for GoTech Media digital agency featuring an Apple-inspired dark UI with all 16 public layer screens.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

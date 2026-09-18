@@ -1,0 +1,61 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (request.auth.token.role == 'ADMIN' ||
+         firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'ADMIN');
+    }
+
+    // 1. Public Agency Assets (Logos, Case study screenshots, Press kit)
+    match /public/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 2. Client User Documents & Avatars
+    match /clients/{userId}/{allPaths=**} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if (isOwner(userId) || isAdmin())
+                   && request.resource.size < 25 * 1024 * 1024; // 25MB max
+    }
+
+    // 3. Project Deliverables, Architecture Specs & Attachments
+    match /projects/{projectId}/{allPaths=**} {
+      allow read: if isAuthenticated() &&
+        (isAdmin() ||
+         firestore.get(/databases/(default)/documents/projects/$(projectId)).data.userId == request.auth.uid ||
+         firestore.get(/databases/(default)/documents/projects/$(projectId)).data.clientId == request.auth.uid);
+      allow write: if isAdmin() ||
+        (isAuthenticated() &&
+         (firestore.get(/databases/(default)/documents/projects/$(projectId)).data.userId == request.auth.uid) &&
+         request.resource.size < 50 * 1024 * 1024); // 50MB max
+    }
+
+    // 4. Quote Request & Inquiries Attachments
+    // Allows clients/prospects to upload proposal specifications (max 20MB, restricted types)
+    match /leads/attachments/{fileName} {
+      allow read: if isAdmin();
+      allow write: if request.resource.size < 20 * 1024 * 1024
+                   && (request.resource.contentType.matches('application/pdf') ||
+                       request.resource.contentType.matches('application/vnd.openxmlformats-officedocument.wordprocessingml.document') ||
+                       request.resource.contentType.matches('application/zip') ||
+                       request.resource.contentType.matches('image/.*'));
+    }
+
+    // 5. Fallback: deny all unauthorized root access
+    match /{allPaths=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
